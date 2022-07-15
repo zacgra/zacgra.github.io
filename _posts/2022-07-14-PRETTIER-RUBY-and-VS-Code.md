@@ -43,4 +43,4 @@ For a more detailed wrap-up, here's what worked for me:
 
 ## Now For Ludicrous Speed!
 
-I probably lost about 5 hours in at this point, between the various forays in to RuboCop and Solargraph. The format on save had gone from...let's say four seconds with RuboCop to maybe half-a-second with Prettier. All I need to do is save 5,142 times before I'll have made up my time. ;)
+I probably lost about 5 hours at this point, between the various forays in to RuboCop and Solargraph. The format-on-save had gone from...let's say four seconds with RuboCop to maybe half-a-second with Prettier. All I need to do is save 5,142 times before I'll have made up my time. ;)
