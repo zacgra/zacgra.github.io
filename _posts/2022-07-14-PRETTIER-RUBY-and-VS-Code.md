@@ -14,15 +14,17 @@ My first approach was Googling "VS Code + Ruby + formatting" and all results poi
 
 ## Prettier's Ruby Plugin
 
-There has got to be a way to get Prettier...oh wait? What's this? https://github.com/prettier/plugin-ruby Prettier's Ruby plugin? How did I miss this? No worries, let's just install it real quick and...
+There has got to be a way to get Prettier...oh wait? What's this? https://github.com/prettier/plugin-ruby Prettier's Ruby plugin? How did I miss this?
+
+### Gem Install
+
+No worries, let's just install it real quick and...
 
 ```console
     Error:
     We failed to spawn our parser server. Please report this error on GitHub
     at https://github.com/prettier/plugin-ruby.
 ```
-
-### Gem Install
 
 So, there are some dependencies, which I thought I installed correctly. Nope. The docs present two paths, one using just a gem, and the other an npm package + gem dependencies. No go on the single gem. While I could get it going on the command line, I just got the `We failed to spawn our parser server.` when triggering on save in VS Code.
 
