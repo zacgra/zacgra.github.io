@@ -1,7 +1,9 @@
 ---
-layout: page
 title: "Prettier, Ruby, and VS Code"
-categories: code config ruby
+author: zacgra
+layout: post
+categories: Code
+tags: [ruby, config, vscode]
 ---
 
 I recently got back in to Ruby/Rails after spending a while in JS land. One of the biggest things I immediately started missing was the Prettier extension's formatting that worked so quickly and seamlessly with JS. The only problem is that Prettier doesn't come with Ruby support built-in. (keyword 'built-in', but we'll get back to that)
