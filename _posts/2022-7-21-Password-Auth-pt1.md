@@ -3,7 +3,7 @@ title: "Password Authentication Part 1: Why Hash & Salt?"
 author: zacgra
 layout: post
 categories: Code
-tags: [ruby, rails, authentication]
+tags: [authentication, security]
 ---
 
 ### Concept #1: Don't store passwords in the database
