@@ -1,10 +1,12 @@
 ---
-title: "Intro to Password Authentication Part 1: Hashing, Salting, and the Why Behind It"
+title: "Password Authentication - Part 1"
 author: zacgra
 layout: post
 categories: Code
 tags: [ruby, rails, authentication]
 ---
+
+# Hashing, Salting, and the Why Behind It
 
 ## Concept #1: Don't store passwords in the database
 
@@ -16,23 +18,23 @@ If we can't store a password in the database directly, what do we do with it? We
 
 There are three broad approaches we could consider for this kind of transformation: encoding, encrypting, and hashing. Which one should we use? Let's take a look at these three in a bit more detail to understand why one solves our problem better than the others.
 
-### Option #1: Encoding
+### Option #1: Transforming using Encoding
 
 Encoding, specifically character encoding, is a reversible data transformation that maps an input to an output, based on a given scheme. A common example is Base64 encoding, which uses a scheme of mapping an 8-bit binary sequence (such as something like `000010`) to its corresponding character (in this case, `C`). Then to encode or decode something in Base64, we just need a table of the mappings between binary and the 64 characters used in Base64. If you give a Base64 function `C`, it will give you back `000010`, and vice versa. The utility of Base64 is in converting binary data to text for the purposes of data transmission where text may be the only supported format. The biggest issue with this form of plain encoding is that, if given the output (ie. the thing we want to store on the server), the only thing preventing a malicious user from figuring out our input (i.e. password) to know what scheme we used.
 
-### Transformation Option #2: Encrypting
+### Option #2: Transforming using Encrypting
 
 Maybe the solution is to just use a less guessable scheme? Encryption is a form of encoding where the scheme is made intentionally unpredictable. A very simple example of encryption would be a [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher). In a Caesar cipher, the cipher takes in an alphabetical character, such as `a` and a key, such as `2`. Then the cipher moves from `a` up `2` places in the alphabet, to `c`. The Caesar cipher applied to `password` with a key of `2` would be `rcuuyqtf`. Although this cipher is not something used in modern development, the essence of encryption is still present. More importantly, the issue with using encryption for our solution can still be seen. Let's say we encrypt our password prior to storing it, then where and how do we store our encryption key? While encryption could potentially work to protect the user password, we've just traded one problem for another. There has to be a more elegant solution.
 
-### Transformation Option #3: Hashing
+### Option #3: Transforming using Hashing
 
 One key component to identifying a password storage solution is that **we** know what the password is. And if the user is required to give us the password to log in, we will **always** have the password when we need to do a user lookup. This is important, as it allows us to use a one-way transformation. As long as our transformation is deterministic (i.e. predictably repeatable), we can take the password, transform it, then use that to identify the stored version. This is where a hash function comes in to play. A hash function is a deterministic, one-way function, which takes in data and applies a tranformation to output a "digest" (i.e. the transformed data).
 
-## Transformation Concept #3: Salt your hashes
+## Concept #3: Salt your hashes
 
-A hash gets us most of the way, but before we jumpt to walking through our solution, there is one contingency we need to address. It is true that a malicious user would likely not be able to brute force crack the password given a digest. But malicious users may be able to identify the hash based on frequency analysis using rainbow tables. Or even more plausible, they may be able to use an already compromised user, where the password is known from a separate breach, get the hash from that known password, and check for any corresponding hashes in the database. Anyone other user with the same password, regardless of their own password best practices, would be compromised.
+A hash gets us most of the way, but before we jumpt to walking through our solution, there is one contingency we need to address. While it would take some serious effort for a malicious user to be able to brute force crack the password given a digest, there are other ways they could use a digest to find a password. They may be able to identify the hash based on frequency analysis using rainbow tables. Or even more plausibly, they may be able to use an already compromised user, where the password is known from a separate breach, get the hash from that known password, and check for any corresponding hashes in the database. Anyone other user with the same password, regardless of their own password best practices, would be compromised as well.
 
-One workaround for this vulnerability is to ensure two users with the same password have two different hash values stored in the database. We can do this by generating a bit of random text called a salt, appending that salt to the password, then hashing the result. As long as the salt has sufficient entropy, then even if two users have the same password, their stored hash is very unlikely to be the same.
+One workaround for these vulnerabilities is to ensure each user's hash digest is unique within the database. We can do this by generating a bit of random text called a salt, then adding that salt to the password (either prepending or appending), then hashing the result. As long as the salt is sufficiently random, then frequency analysis of the digests can't be applied, and there are no matching digests within the database with which to cross-reference compromised passwords.
 
 ## Applying These Concepts To Create A Solution
 
