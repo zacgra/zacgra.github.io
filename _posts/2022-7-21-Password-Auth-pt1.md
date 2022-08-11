@@ -36,8 +36,12 @@ One workaround for these vulnerabilities is to ensure each user's hash digest is
 
 ### Creating An Authentication Algorithm
 
-**User Account Creation:**
+Using our reasoning from the above discussion, now we can think in broad terms of how we might implement this process.
+
+**Step 1: User Account Creation:**
 When a user creates an account, they give us their password. Rather than storing that password, we salt that password, then hash it, and store the resulting digest in the database.
 
-**User Login:**
+Note: Where do we store the salt? With a common hashing library like BCrypt, the salt is returned as a part in the string from the hash function, along with the BCrypt alogrithm, the hash cost and the hashed password itself.
+
+**Step 2: User Login:**
 When a user logs in, they provide us an email or username, as well as a password. We first look up the user by the provided email/username. Next, we create a digest from the password they provide us by salting then hashing the provided password. Finally, we compare the new digest to the one stored with the user that we just looked up. If they are the same, the provided password has been confirmed and the user has successfully authenticated.
