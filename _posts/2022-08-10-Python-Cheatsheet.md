@@ -6,7 +6,16 @@ categories: Code
 tags: [python, cheatsheet]
 ---
 
-## [Virtual Environments](https://docs.python.org/3/library/venv.html)
+[Virtual Environments](#virtual-environments)
+[String Indexing](#string-indexing)
+[String Concatenation](#string-concatenation)
+[String Formatting](#string-formatting)
+[String Functions](#string-functions)
+[String Methods](#string-methods)
+
+## Virtual Environments
+
+(https://docs.python.org/3/library/venv.html)
 
 ```console
 python3 -m venv /path/to/new/virtual/environment
