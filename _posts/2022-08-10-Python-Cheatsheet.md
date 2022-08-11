@@ -6,8 +6,6 @@ categories: Code
 tags: [python, cheatsheet]
 ---
 
-[String Indexing](#string-indexing)
-
 ## [Virtual Environments](https://docs.python.org/3/library/venv.html)
 
 ```console
@@ -80,4 +78,30 @@ python3 -m venv /path/to/new/virtual/environment
     print("Spaghetti".count("t"))    # => 2
     print("Spaghetti".count("s"))    # => 0
 
+```
+
+### String Methods
+
+```py
+    "Hello".upper() # => "HELLO"
+    "Hello".lower() # => "hello
+
+    "hello".islower() # => True
+    "Hello".isupper() # => False
+    "HELLO".isupper() # => True
+
+    "Hello".startswith("He") # => True
+    "Hello".endswith("lo") # => True
+
+    "Hello World".split() # => ["Hello", "World"]
+    "i-am-a-dog".split("-") # => ["i", "am", "a", "dog"]
+
+    "--".join(["Hello", "World"]) # => "Hello--World"
+
+    "abc".isalpha() # => True
+    "abc!@#".isalnum() # => False
+    "12345".isdecimal() # => True
+    "  ".isspace() # => True
+    "This Is A Title".istitle() # => True
+    "This Is a Title".istitle() # => False
 ```
