@@ -1,5 +1,5 @@
 ---
-title: "Curling for Beginners"
+title: "Curl Cheatsheet"
 author: zacgra
 layout: post
 categories: Code
