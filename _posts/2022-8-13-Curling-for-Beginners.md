@@ -55,7 +55,9 @@ curl -X PATCH https://jsonplaceholder.typicode.com/posts/1 \
 #   "userId": 1,
 #   "id": 1,
 #   "title": "foobaloo",
-#   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+#   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et
+#            cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum
+#            est autem sunt rem eveniet architecto"
 # }
 ```
 
