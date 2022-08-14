@@ -1,5 +1,5 @@
 ---
-title: "Authentication - Part 3: The Algorithm"
+title: "Authentication - Part 3: The Implementation"
 author: zacgra
 layout: post
 categories: Code
