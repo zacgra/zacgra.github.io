@@ -55,12 +55,15 @@ shoulda-matcher config
 
 ```rb
 # spec/rails_helper.rb
-Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
-        with.test_framework :rspec
-        with.library :rails
+...
+RSpec.configure do |config|
+    Shoulda::Matchers.configure do |config|
+        config.integrate do |with|
+            with.test_framework :rspec
+            with.library :rails
+        end
     end
-end
+...
 ```
 
 Don't forget to require it in your class!
@@ -76,6 +79,7 @@ FactoryBot Config
 
 ```rb
 # spec/rails_helper.rb
+# Add additional requires below this line. Rails is not loaded until this point!
 require 'support/factory_bot'
 ```
 
@@ -110,6 +114,7 @@ it { should validate_presence_of(:email) }
 FactoryBot in Model
 
 ```rb
+# define user for use inside it blocks
 subject(:user) do
     FactoryBot.build(:user)
 end
