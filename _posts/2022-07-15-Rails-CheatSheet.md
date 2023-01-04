@@ -6,32 +6,17 @@ categories: Code
 tags: [ruby, rails]
 ---
 
-## New Rails Project Setup
+# Migrations
 
-1. Generate new Rails project
-   Use the `--database=postgresql` to specify postgres, otherwise it will default to SQLite.
-
-```console
-$ rails new demo_project -G --database=postgresql
-```
-
-2.  Create the database
+### 1. Generate a Migration
 
 ```console
-$ bundle exec rails db:create
-```
-
-## Migrations
-
-### Generate a Migration
-
-```console
-`$ rails generate migration CreateUsers
+rails generate migration CreateUsers
 # or
-`$ rails g migration CreateUsers
+rails g migration CreateUsers
 ```
 
-### Create a Table
+### 2. Create a Table
 
 ```rb
 create_table :products do |t|
@@ -55,17 +40,44 @@ add_index :table_name, %i[column1 column2], options_hash
 change_column :table_name, :column_name, :type, options_hash
 ```
 
+### Additional Table Examples
+
+```rb
+# Make the id a UUID
+create_table :places, id: :uuid do |t|
+  t.string :name, null: false
+  t.string :address, null: false
+  t.string :city, null: false
+
+  t.timestamps
+end
+```
+
+```rb
+# Use references for a foreign key
+
+# Using decimals, for a decimal value, set a scale (num of digits after period) and precision (total numbers)
+
+create_table :internet_speeds, id: :uuid do |t|
+  t.references :place, null: false, foreign_key: true, index: true, type: :uuid
+  t.decimal :download_speed, null: false, scale: 2, precision: 10
+  t.string :download_units, null: false
+
+  t.timestamps
+end
+```
+
 <!-- ### Adding Column Modifiers -->
 
-### Run a Migration
+### 3. Create a table by running your migration
 
-- Edit a migration by running a new migration to make changes to your table. Don't edit after migration.
+Edit a migration by running a new migration to make changes to your table. Don't edit after migration.
 
 ```console
 rails db:migrate
 ```
 
-## Models
+# Models
 
 ### Associations
 
@@ -124,7 +136,7 @@ class Patient < ApplicationRecord
   )
 ```
 
-### Validation
+## Validation
 
 Validations are defined inside models.
 Constraints are defined inside migrations.
