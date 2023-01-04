@@ -6,17 +6,16 @@ categories: Code
 tags: [Rails, React]
 ---
 
-# Setting up Rails 7 with React from Scratch
-
 ## Step #1: Install Dependencies
 
-### Install modern versions of Node and Yarn
+### Install up-to-date versions of Node and Yarn
 
-You can install via Homebrew(MacOS) or ASDF(Mac/Linux/WSL)
+You can install via Homebrew(MacOS) or ASDF(Mac/Linux/WSL) or any other package/version manager of your choice.
 
 ### Install a newer version of Ruby
 
 ```
+# as an example
 asdf install ruby 3.1.3
 ```
 
@@ -32,7 +31,7 @@ gem install rails
 
 ### Install Rails 7
 
-This step has changed a bit from Rails 6, so the key is specifying `esbuild` for JavaScript bundling. This will also install the `jsbundling-rails` gem. Skipping hotwire is not required, but might make things a bit less cluttered. The database and css flags, as well as skipping the default testing setup, are also just for reference.
+This step has changed a bit from Rails 6, so the key is specifying `esbuild` for JavaScript bundling. This will also install the `jsbundling-rails` gem. Skipping hotwire is not required, but might make things a bit less cluttered or conflicting. The database and css flags, as well as skipping the default testing setup, are also just for reference.
 
 ```
 rails new railsappname \
@@ -85,12 +84,12 @@ end
 
 Finally, in `views`, create a new folder called pages, then add a new file called `homepage.html.erb`. Inside that, paste the following:
 
-```rb
+```html
 <h1>Rails with React</h1>
-<p id="react-root">This paragraph is being renderd by Rails<p>
+<p id="react-root">This paragraph is being renderd by Rails</p>
 ```
 
-Take note of the id we are using here, as this is where we will hook in our React.
+Take note of the id we are using here, as this is where we will hook in our React root later.
 
 Now Rails server should be showing our new homepage view when we refresh the browser.
 
