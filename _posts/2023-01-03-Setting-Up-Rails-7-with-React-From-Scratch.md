@@ -95,6 +95,14 @@ Now Rails server should be showing our new homepage view when we refresh the bro
 
 ## Step 3: Set up React
 
+### Install React and ReactDOM
+
+Since we already installed yarn, we can just run the following:
+
+```
+yarn install react react-dom
+```
+
 ### Create a component to ensure rendering is working
 
 Next, let's set up the React component we want to render, just to make sure everything is configured correctly.
