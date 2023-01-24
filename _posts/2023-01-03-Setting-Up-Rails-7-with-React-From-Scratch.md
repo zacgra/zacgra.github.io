@@ -31,14 +31,13 @@ gem install rails
 
 ### Install Rails 7
 
-This step has changed a bit from Rails 6, so the key is specifying `esbuild` for JavaScript bundling. This will also install the `jsbundling-rails` gem. Skipping hotwire is not required, but might make things a bit less cluttered or conflicting. The database and css flags, as well as skipping the default testing setup, are also just for reference.
+This step has changed a bit from Rails 6, so the key is specifying `esbuild` for JavaScript bundling. This will also install the `jsbundling-rails` gem. Skipping hotwire is not required, but might make things a bit less cluttered or conflicting. The database flag, as well as skipping the default testing setup, are also just for reference.
 
 ```
 rails new railsappname \
     --skip-hotwire --skip-test \
     -d postgresql \
     --javascript=esbuild \
-    --css=tailwind
 ```
 
 ### Setup Database
@@ -72,10 +71,10 @@ First, go in to `config/routes.rb` and add a a new route:
 root "homepage#index"
 ```
 
-Next, in `app/controllers` add a new file called `home_page_controller.rb` and paste the following:
+Next, in `app/controllers` add a new file called `homepage_controller.rb` and paste the following:
 
 ```rb
-class HomePage < ApplicationController
+class HomepageController < ApplicationController
     def index
         render "pages/homepage"
     end
