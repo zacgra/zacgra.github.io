@@ -11,13 +11,11 @@ machine, while using some of the cloud scripting functionality.
 
 ## 1. Install Multipass
 
-- install from https://multipass.run/install
+- install from [https://multipass.run/install](https://multipass.run/install)
 
 ## 2. Review the `docker` workflow
 
-We will be using the `docker` workflow, a cloud-init yaml file
-
-- docker workflow `https://github.com/canonical/multipass-blueprints/blob/main/v1/docker.yaml`
+We will be using the [docker workflow](https://github.com/canonical/multipass-blueprints/blob/main/v1/docker.yaml), a cloud-init yaml file
 
 ## 3. Launch a new instance using the `docker` workflow
 
